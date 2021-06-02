@@ -1,0 +1,16 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: customer-service
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${random.value}
+    lease-renewal-interval-in-seconds: 10 #디스커버리한테 (default:30) 10초마다 하트비트 전송
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
